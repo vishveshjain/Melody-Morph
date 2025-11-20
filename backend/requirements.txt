@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+librosa
+numpy
+scipy
+midi2audio
+pydub
+mido
+requests

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody Morph</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-music"></i> Melody Morph
+            </div>
+            <div class="header-controls">
+                <span><i class="fa-solid fa-desktop"></i> Device</span>
+                <span><i class="fa-solid fa-rotate-right"></i></span>
+                <span><i class="fa-solid fa-expand"></i></span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <div class="input-toggle">
+                    <button class="toggle-btn" id="micBtn">
+                        <i class="fa-solid fa-microphone"></i> Microphone
+                    </button>
+                    <button class="toggle-btn active" id="uploadBtn">
+                        <i class="fa-solid fa-upload"></i> Upload File
+                    </button>
+                </div>
+
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-content">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Drag & Drop or Click to Upload</p>
+                        <span class="file-name" id="fileName">No file selected</span>
+                    </div>
+                    <input type="file" id="fileInput" accept="audio/*" hidden>
+                </div>
+
+                <button class="start-btn" id="convertBtn" disabled>
+                    <i class="fa-solid fa-play"></i> Start Transformation
+                </button>
+
+                <div class="instructions">
+                    <h3>How to use:</h3>
+                    <ul>
+                        <li>Select an instrument from the right panel.</li>
+                        <li>Upload a song or audio file.</li>
+                        <li>Press Start. It may take a moment to process.</li>
+                        <li>The AI will morph your melody into the chosen instrument!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <div class="visualizer-section">
+                    <div class="viz-box">
+                        <label>INPUT SOURCE</label>
+                        <div class="viz-display" id="inputViz">
+                            <div class="wave-placeholder">Waiting for input...</div>
+                        </div>
+                    </div>
+                    <div class="viz-box">
+                        <label>AI OUTPUT (<span id="outputLabel">...</span>)</label>
+                        <div class="viz-display" id="outputViz">
+                            <div class="wave-placeholder">Waiting for result...</div>
+                        </div>
+                        <div class="audio-controls" id="audioControls" style="display: none;">
+                            <audio id="audioPlayer" controls></audio>
+                            <a id="downloadLink" href="#" download class="download-link"><i
+                                    class="fa-solid fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instrument-section">
+                    <label>SELECT TARGET INSTRUMENT</label>
+                    <div class="instrument-grid" id="instrumentGrid">
+                        <!-- Instruments will be generated here or hardcoded -->
+                        <div class="inst-card active" data-value="Flute">
+                            <div class="icon"><i class="fa-solid fa-wind"></i></div>
+                            <span>Flute</span>
+                        </div>
+                        <div class="inst-card" data-value="Guitar">
+                            <div class="icon"><i class="fa-solid fa-guitar"></i></div>
+                            <span>Guitar</span>
+                        </div>
+                        <div class="inst-card" data-value="Piano">
+                            <div class="icon"><i class="fa-solid fa-music"></i></div>
+                            <span>Piano</span>
+                        </div>
+                        <div class="inst-card" data-value="Violin">
+                            <div class="icon"><i class="fa-solid fa-italic"></i></div> <!-- Placeholder for violin -->
+                            <span>Violin</span>
+                        </div>
+                        <div class="inst-card" data-value="Trumpet">
+                            <div class="icon"><i class="fa-solid fa-bullhorn"></i></div>
+                            <span>Trumpet</span>
+                        </div>
+                        <div class="inst-card" data-value="Saxophone">
+                            <div class="icon"><i class="fa-solid fa-music"></i></div>
+                            <span>Saxophone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="status-bar" id="statusBar">
+            <span class="status-dot"></span> STATUS: <span id="statusText">READY</span>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
